@@ -2,10 +2,12 @@ import express from 'express';
 import mongoose from 'mongoose';
 import dotenv from 'dotenv';
 import userRouter from './routes/user.route.js';
+import authRouter from './routes/auth.route.js';
 
 dotenv.config();
 
 const app = express();
+app.use(express.json());
 
 mongoose.connect("mongodb+srv://Akanksha:akanksha@mern-real-estate-web-ap.uwwyr.mongodb.net/mern-real-estate-web-app?retryWrites=true&w=majority&appName=mern-real-estate-web-app")
 
@@ -20,3 +22,4 @@ mongoose.connect("mongodb+srv://Akanksha:akanksha@mern-real-estate-web-ap.uwwyr.
     });
 
 app.use("/api/user", userRouter);
+app.use("/api/auth", authRouter);
